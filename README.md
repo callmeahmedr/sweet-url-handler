@@ -25,10 +25,14 @@ require_once 'src/SweetUrlHandler.php';
 ### Step 3: Configure Your `.htaccess` File
 Ensure your .htaccess file has the following rules to enable clean URLs:
 ```apache
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
-Options -Indexes
+RewriteEngine On
+
+# Check if the request is for a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite request to a PHP file containing SweetUrlHandler initialization
+RewriteRule ^(.*)$ router.php?path=$1 [QSA,L]
 ```
 
 ## Basic Usage
