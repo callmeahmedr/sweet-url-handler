@@ -65,3 +65,23 @@ if ($match) {
     echo 'No match found';
 }
 ```
+
+### Route Matching with Parameters
+The `matchRoute()` method has been enhanced to merge route parameters with query parameters, providing a comprehensive set of parameters.
+```php
+require_once 'src/SweetUrlHandler.php';
+
+$handler = new SweetUrlHandler();
+
+// Example: Match a route like /products/123?sort=asc
+$handler->handleRoute('products/{id}', function($params) {
+    echo 'Product ID: ' . $params['id'] . '<br>';
+    echo 'Sort Order: ' . $params['sort'];
+});
+
+// Example: Get a specific route segment
+echo 'Second Segment: ' . $handler->getRoute(1);
+
+// Example: Get all query parameters
+print_r($handler->getParams());
+```
