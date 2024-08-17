@@ -13,7 +13,7 @@ A lightweight and scalable PHP utility to handle clean and pretty URLs in your a
 ### Step 1: Clone the repository:
 Clone the repository to your local machine using the following command:
 ```bash
-git clone https://github.com/yourusername/sweet-url-handler.git
+git clone https://github.com/callmeahmedr/sweet-url-handler.git
 ```
 
 ### Step 2: Include the Handler in Your Project:
