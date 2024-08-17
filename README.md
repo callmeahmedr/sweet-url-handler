@@ -85,3 +85,15 @@ echo 'Second Segment: ' . $handler->getRoute(1);
 // Example: Get all query parameters
 print_r($handler->getParams());
 ```
+
+## Contributing
+I welcome contributions to enhance the functionality and improve the `SweetUrlHandler`. To contribute:
+
+1. **Fork the Repository**: Create a fork of this repository to your own GitHub account.
+2. **Create a Branch**: Create a new branch for your changes.
+3. **Make Your Changes**: Implement your improvements or bug fixes.
+4. **Submit a Pull Request**: Submit a pull request with a clear description of your changes.
+
+Please ensure your contributions follow the existing coding standards and add tests where appropriate. Open an issue to discuss your changes.
+
+***Thank you for helping make `SweetUrlHandler` better!***
