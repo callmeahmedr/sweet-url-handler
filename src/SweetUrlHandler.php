@@ -2,14 +2,26 @@
 
 class SweetUrlHandler {
     private $route;
+    private $params = [];
 
     public function __construct() {
         // Parse the request URI and remove the query string if present
         $requestURI = $_SERVER['REQUEST_URI'];
         $path = parse_url( $requestURI, PHP_URL_PATH );
 
+        // Get the base directory where the script is running
+        $baseDir = str_replace( $_SERVER['DOCUMENT_ROOT'], '', dirname( $_SERVER['SCRIPT_FILENAME'] ) );
+
+        // Remove the base directory from the path to handle routes correctly
+        if ( strpos( $path, $baseDir ) === 0 ) {
+            $path = substr( $path, strlen( $baseDir ) );
+        }
+
         // Split the path into components and remove any empty values
         $this->route = array_filter( explode( '/', trim( $path, '/' ) ) );
+
+        // Parse query parameters
+        parse_str( parse_url( $requestURI, PHP_URL_QUERY ), $this->params );
     }
 
     /**
@@ -24,6 +36,20 @@ class SweetUrlHandler {
             return isset( $this->route[$index] ) ? $this->route[$index] : null;
         }
         return $this->route;
+    }
+
+    /**
+    * Get all query parameters or a specific parameter by name.
+    *
+    * @param string|null $name The name of the query parameter to return.
+    * @return mixed The query parameters array or specific parameter value.
+    */
+
+    public function getParams( $name = null ) {
+        if ( $name !== null ) {
+            return isset( $this->params[$name] ) ? $this->params[$name] : null;
+        }
+        return $this->params;
     }
 
     /**
@@ -53,6 +79,21 @@ class SweetUrlHandler {
             }
         }
 
-        return $params;
+        return array_merge( $params, $this->params );
+    }
+
+    /**
+    * Match the route against a pattern and call a callback function if matched.
+    *
+    * @param string $pattern The route pattern to match.
+    * @param callable $callback The callback function to execute if the route matches.
+    * @return void
+    */
+
+    public function handleRoute( $pattern, $callback ) {
+        $params = $this->matchRoute( $pattern );
+        if ( $params !== false ) {
+            call_user_func( $callback, $params );
+        }
     }
 }
