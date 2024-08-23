@@ -90,6 +90,22 @@ echo 'Second Segment: ' . $handler->getRoute(1);
 print_r($handler->getParams());
 ```
 
+### Custom Route Handlers
+You can define custom route handlers for specific patterns:
+```php
+require_once 'src/SweetUrlHandler.php';
+
+$handler = new SweetUrlHandler();
+
+// Add a custom route handler
+$handler->addCustomHandler('articles/{id}', function($params) {
+    echo 'Article ID: ' . $params['id'];
+});
+
+// Handle custom routes
+$handler->handleCustomRoutes();
+```
+
 ### Method Summary
 
 | Method                     | Purpose                                                                                     | Parameters                | Returns                                               | Usage Example                                                   |
@@ -98,16 +114,7 @@ print_r($handler->getParams());
 | `getParams($name)`         | Retrieves query parameters or a specific parameter if a name is provided.                  | `$name` (optional)        | Value of specific query parameter or entire parameters array | `$params = $handler->getParams();`<br>`$value = $handler->getParams('sort');` |
 | `matchRoute($pattern)`     | Matches the current route against a given pattern and extracts parameters if matched.      | `$pattern`                | Associative array of parameters or `false` if no match | `$match = $handler->matchRoute('products/{id}');`<br>`if ($match) { echo 'Product ID: ' . $match['id']; }` |
 | `handleRoute($pattern, $callback)` | Matches the current route against a pattern and executes a callback function if matched. | `$pattern`, `$callback`   | None                                                  | `$handler->handleRoute('products/{id}', function($params) { echo 'Product ID: ' . $params['id']; });` |
-
-### Summary Table
-
-| Method                     | Description                                                                                 |
-|----------------------------|---------------------------------------------------------------------------------------------|
-| **`getRoute($index)`**     | Retrieves the route as an array or a specific segment by index.                             |
-| **`getParams($name)`**     | Gets query parameters from the URL or a specific parameter value.                           |
-| **`matchRoute($pattern)`** | Matches the route against a specified pattern and extracts route parameters.               |
-| **`handleRoute($pattern, $callback)`** | Matches the route against a pattern and executes a callback with matched parameters.    |
-
+| `handleCustomRoutes()`         | Executes custom handlers for registered patterns.    | None  | None | `$handler->handleCustomRoutes();` |
 
 ## Contributing
 I welcome contributions to enhance the functionality and improve the `SweetUrlHandler`. To contribute:
