@@ -126,4 +126,4 @@ I welcome contributions to enhance the functionality and improve the `SweetUrlHa
 
 Please ensure your contributions follow the existing coding standards and add tests where appropriate. Open an issue to discuss your changes.
 
-Thank you for helping make `SweetUrlHandler` better!
+Thank you for helping make **SweetUrlHandler** better!
