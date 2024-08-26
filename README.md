@@ -1,5 +1,7 @@
 ![[](frame_generic)](https://github.com/callmeahmedr/sweet-url-handler/blob/e52046ace9deea94607d8d3c1b0a8940164481eb/docs/frame_generic.png)
 
+# SweetUrlHandler
+
 A lightweight and scalable PHP utility to handle clean and pretty URLs in your application.
 
 ## Features
@@ -36,7 +38,6 @@ RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
 ```
 
 ## Basic Usage
-
 Here’s a simple example of how to use the 'SweetUrlHandler' class in your project:
 ```php
 require_once 'src/SweetUrlHandler.php';
@@ -163,4 +164,4 @@ I welcome contributions to enhance the functionality and improve the `SweetUrlHa
 
 Please ensure your contributions follow the existing coding standards and add tests where appropriate. Open an issue to discuss your changes.
 
-Thank you for helping make **SweetUrlHandler** better!
+Thank you for helping improve SweetUrlHandler!
