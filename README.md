@@ -41,16 +41,24 @@ Here’s a simple example of how to use the 'SweetUrlHandler' class in your proj
 ```php
 require_once 'src/SweetUrlHandler.php';
 
+// Create an instance of the SweetUrlHandler class
 $handler = new SweetUrlHandler();
+
+// Example URL for demonstration
+// Suppose the current URL is http://example.com/products/category/item
+// The SweetUrlHandler will process this URL to extract the route
+$currentUrl = 'http://example.com/products/category/item';
+
+// Set the current URL (this might be done automatically in a real application)
+$handler->setUrl($currentUrl);
 
 // Get the entire route as an array
 $route = $handler->getRoute();
-echo 'Current Route: ' . implode('/', $route);
+echo 'Current Route: ' . implode('/', $route) . PHP_EOL;
 
 // Get a specific segment of the route
 $segment = $handler->getRoute(0); // First segment
-echo 'First Segment: ' . $segment;
-
+echo 'First Segment: ' . $segment . PHP_EOL;
 ```
 
 ## Advanced Usage
@@ -59,14 +67,26 @@ You can match specific routes using patterns. This allows you to define routes w
 ```php
 require_once 'src/SweetUrlHandler.php';
 
+// Create an instance of the SweetUrlHandler class
 $handler = new SweetUrlHandler();
 
-// Example: Match a route like /products/123
-$match = $handler->matchRoute('products/{id}');
+// Example URL for demonstration
+// Suppose the current URL is http://example.com/products/123
+$currentUrl = 'http://example.com/products/123';
+
+// Set the current URL (this might be done automatically in a real application)
+$handler->setUrl($currentUrl);
+
+// Define the route pattern
+$pattern = 'products/{id}';
+
+// Match the route against the pattern
+$match = $handler->matchRoute($pattern);
+
 if ($match) {
-    echo 'Product ID: ' . $match['id'];
+    echo 'Product ID: ' . $match['id'] . PHP_EOL;
 } else {
-    echo 'No match found';
+    echo 'No match found' . PHP_EOL;
 }
 ```
 
@@ -75,16 +95,25 @@ The `matchRoute()` method has been enhanced to merge route parameters with query
 ```php
 require_once 'src/SweetUrlHandler.php';
 
+// Create an instance of the SweetUrlHandler class
 $handler = new SweetUrlHandler();
 
-// Example: Match a route like /products/123?sort=asc
+// Example URL for demonstration
+// Suppose the current URL is http://example.com/products/123?sort=asc
+$currentUrl = 'http://example.com/products/123?sort=asc';
+
+// Set the current URL (this might be done automatically in a real application)
+$handler->setUrl($currentUrl);
+
+// Define a route pattern with parameters
 $handler->handleRoute('products/{id}', function($params) {
+    // Display the extracted parameters
     echo 'Product ID: ' . $params['id'] . '<br>';
-    echo 'Sort Order: ' . $params['sort'];
+    echo 'Sort Order: ' . (isset($params['sort']) ? $params['sort'] : 'not specified') . '<br>';
 });
 
 // Example: Get a specific route segment
-echo 'Second Segment: ' . $handler->getRoute(1);
+echo 'Second Segment: ' . $handler->getRoute(1) . '<br>';
 
 // Example: Get all query parameters
 print_r($handler->getParams());
@@ -95,14 +124,22 @@ You can define custom route handlers for specific patterns:
 ```php
 require_once 'src/SweetUrlHandler.php';
 
+// Create an instance of the SweetUrlHandler class
 $handler = new SweetUrlHandler();
 
-// Add a custom route handler
+// Example URL for demonstration
+// Suppose the current URL is http://example.com/articles/456
+$currentUrl = 'http://example.com/articles/456';
+
+// Set the current URL (this might be done automatically in a real application)
+$handler->setUrl($currentUrl);
+
+// Add a custom route handler for 'articles/{id}'
 $handler->addCustomHandler('articles/{id}', function($params) {
-    echo 'Article ID: ' . $params['id'];
+    echo 'Article ID: ' . $params['id'] . '<br>';
 });
 
-// Handle custom routes
+// Handle custom routes based on the current URL
 $handler->handleCustomRoutes();
 ```
 
