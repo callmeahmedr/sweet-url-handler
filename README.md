@@ -140,14 +140,41 @@ $handler->addCustomHandler('articles/{id}', function($params) {
 $handler->handleCustomRoutes();
 ```
 
-### Method Summary
-| Method                     | Purpose                                                                                     | Parameters                | Returns                                               | Usage Example                                                   |
-|----------------------------|---------------------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------|-----------------------------------------------------------------|
-| `getRoute($index)`         | Retrieves the route segments as an array or a specific segment if an index is provided.    | `$index` (optional)       | Route segment at index or entire route array         | `$route = $handler->getRoute();`<br>`$segment = $handler->getRoute(0);` |
-| `getParams($name)`         | Retrieves query parameters or a specific parameter if a name is provided.                  | `$name` (optional)        | Value of specific query parameter or entire parameters array | `$params = $handler->getParams();`<br>`$value = $handler->getParams('sort');` |
-| `matchRoute($pattern)`     | Matches the current route against a given pattern and extracts parameters if matched.      | `$pattern`                | Associative array of parameters or `false` if no match | `$match = $handler->matchRoute('products/{id}');`<br>`if ($match) { echo 'Product ID: ' . $match['id']; }` |
-| `handleRoute($pattern, $callback)` | Matches the current route against a pattern and executes a callback function if matched. | `$pattern`, `$callback`   | None                                                  | `$handler->handleRoute('products/{id}', function($params) { echo 'Product ID: ' . $params['id']; });` |
-| `handleCustomRoutes()`         | Executes custom handlers for registered patterns.    | None  | None | `$handler->handleCustomRoutes();` |
+## Method Summary
+### `getRoute($index)`
+| <!-- --> | <!-- --> |
+| ------------- | ------------- |
+| **Purpose**          | Retrieves the route segments as an array or a specific segment if an index is provided.  |
+| **Parameters**       | `$index` (optional)  |
+| **Returns**          | Route segment at index or entire route array  |
+
+### `getParams($name)`
+| <!-- --> | <!-- --> |
+| ------------- | ------------- |
+| **Purpose**          | Retrieves query parameters or a specific parameter if a name is provided.  |
+| **Parameters**       | `$name` (optional)  |
+| **Returns**          | Value of specific query parameter or entire parameters array  |
+
+### `matchRoute($pattern)`
+| <!-- --> | <!-- --> |
+| ------------- | ------------- |
+| **Purpose**          | Matches the current route against a given pattern and extracts parameters if matched.  |
+| **Parameters**       | `$pattern`  |
+| **Returns**          | Associative array of parameters or `false` if no match	  |
+
+### `handleRoute($pattern, $callback)`
+| <!-- --> | <!-- --> |
+| ------------- | ------------- |
+| **Purpose**          | Matches the current route against a pattern and executes a callback function if matched.  |
+| **Parameters**       | `$pattern`, `$callback`  |
+| **Returns**          | None |
+
+### `handleCustomRoutes()`
+| <!-- --> | <!-- --> |
+| ------------- | ------------- |
+| **Purpose**          | Executes custom handlers for registered patterns.  |
+| **Parameters**       | None  |
+| **Returns**          | None |
 
 ## Contributing
 I welcome contributions to enhance the functionality and improve the `SweetUrlHandler`. To contribute:
