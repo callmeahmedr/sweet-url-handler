@@ -31,8 +31,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Rewrite request to a PHP file containing SweetUrlHandler initialization (by default it's router.php)
-RewriteRule ^(.*)$ router.php?path=$1 [QSA,L]
+# Rewrite request to a PHP file containing SweetUrlHandler initialization (by default it's index.php)
+RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
 ```
 
 ## Basic Usage
