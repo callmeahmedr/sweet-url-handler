@@ -1,4 +1,4 @@
-# Sweet URL Handler
+![[](frame_generic)](https://github.com/callmeahmedr/sweet-url-handler/blob/e52046ace9deea94607d8d3c1b0a8940164481eb/docs/frame_generic.png)
 
 A lightweight and scalable PHP utility to handle clean and pretty URLs in your application.
 
