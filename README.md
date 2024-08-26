@@ -1,4 +1,4 @@
-# Pretty URLs PHP
+# Sweet URL Handler
 
 A lightweight and scalable PHP utility to handle clean and pretty URLs in your application.
 
@@ -17,9 +17,9 @@ git clone https://github.com/callmeahmedr/sweet-url-handler.git
 ```
 
 ### Step 2: Include the Handler in Your Project:
-Add the `PrettyURLsPHP.php` file to your project by including it in your PHP scripts:
+Add the `SweetUrlHandler.php` file to your project by including it in your PHP scripts:
 ```php
-require_once 'src/PrettyURLsPHP.php';
+require_once 'src/SweetUrlHandler.php';
 ```
 
 ### Step 3: Configure Your `.htaccess` File
@@ -31,17 +31,17 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Rewrite request to a PHP file containing PrettyURLsPHP initialization (by default it's router.php)
+# Rewrite request to a PHP file containing SweetUrlHandler initialization (by default it's router.php)
 RewriteRule ^(.*)$ router.php?path=$1 [QSA,L]
 ```
 
 ## Basic Usage
 
-Here’s a simple example of how to use the 'PrettyURLsPHP' class in your project:
+Here’s a simple example of how to use the 'SweetUrlHandler' class in your project:
 ```php
-require_once 'src/PrettyURLsPHP.php';
+require_once 'src/SweetUrlHandler.php';
 
-$handler = new PrettyURLsPHP();
+$handler = new SweetUrlHandler();
 
 // Get the entire route as an array
 $route = $handler->getRoute();
@@ -57,9 +57,9 @@ echo 'First Segment: ' . $segment;
 ### Route Matching
 You can match specific routes using patterns. This allows you to define routes with parameters, making your URL handling more dynamic:
 ```php
-require_once 'src/PrettyURLsPHP.php';
+require_once 'src/SweetUrlHandler.php';
 
-$handler = new PrettyURLsPHP();
+$handler = new SweetUrlHandler();
 
 // Example: Match a route like /products/123
 $match = $handler->matchRoute('products/{id}');
@@ -73,9 +73,9 @@ if ($match) {
 ### Route Matching with Parameters
 The `matchRoute()` method has been enhanced to merge route parameters with query parameters, providing a comprehensive set of parameters.
 ```php
-require_once 'src/PrettyURLsPHP.php';
+require_once 'src/SweetUrlHandler.php';
 
-$handler = new PrettyURLsPHP();
+$handler = new SweetUrlHandler();
 
 // Example: Match a route like /products/123?sort=asc
 $handler->handleRoute('products/{id}', function($params) {
@@ -93,9 +93,9 @@ print_r($handler->getParams());
 ### Custom Route Handlers
 You can define custom route handlers for specific patterns:
 ```php
-require_once 'src/PrettyURLsPHP.php';
+require_once 'src/SweetUrlHandler.php';
 
-$handler = new PrettyURLsPHP();
+$handler = new SweetUrlHandler();
 
 // Add a custom route handler
 $handler->addCustomHandler('articles/{id}', function($params) {
@@ -117,7 +117,7 @@ $handler->handleCustomRoutes();
 | `handleCustomRoutes()`         | Executes custom handlers for registered patterns.    | None  | None | `$handler->handleCustomRoutes();` |
 
 ## Contributing
-I welcome contributions to enhance the functionality and improve the `PrettyURLsPHP`. To contribute:
+I welcome contributions to enhance the functionality and improve the `SweetUrlHandler`. To contribute:
 
 1. **Fork the Repository**: Create a fork of this repository to your own GitHub account.
 2. **Create a Branch**: Create a new branch for your changes.
@@ -126,4 +126,4 @@ I welcome contributions to enhance the functionality and improve the `PrettyURLs
 
 Please ensure your contributions follow the existing coding standards and add tests where appropriate. Open an issue to discuss your changes.
 
-Thank you for helping make **PrettyURLsPHP** better!
+Thank you for helping make **SweetUrlHandler** better!
