@@ -1,17 +1,13 @@
 ![[](frame_generic)](https://github.com/callmeahmedr/sweet-url-handler/blob/e52046ace9deea94607d8d3c1b0a8940164481eb/docs/frame_generic.png)
-
 # SweetUrlHandler
-
 A lightweight and scalable PHP utility to handle clean and pretty URLs in your application.
 
 ## Features
-
 - **Easy Integration:** Simple to set up and use in any PHP project.
 - **Scalable:** Designed to handle multiple routes efficiently.
 - **Customizable:** Easily extendable for more advanced routing needs.
 
 ## Installation
-
 ### Step 1: Clone the repository:
 Clone the repository to your local machine using the following command:
 ```bash
@@ -145,7 +141,6 @@ $handler->handleCustomRoutes();
 ```
 
 ### Method Summary
-
 | Method                     | Purpose                                                                                     | Parameters                | Returns                                               | Usage Example                                                   |
 |----------------------------|---------------------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------|-----------------------------------------------------------------|
 | `getRoute($index)`         | Retrieves the route segments as an array or a specific segment if an index is provided.    | `$index` (optional)       | Route segment at index or entire route array         | `$route = $handler->getRoute();`<br>`$segment = $handler->getRoute(0);` |
