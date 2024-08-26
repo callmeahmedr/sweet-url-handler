@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetUrlHandler Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .example {
+            background-color: #f9f9f9;
+            border-left: 4px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SweetUrlHandler Documentation</h1>
+
+    <p>The <code>SweetUrlHandler</code> class is a powerful tool for managing and handling URL routing and query parameters in PHP applications. It allows you to parse the request URI, match routes, and handle custom routes with ease.</p>
+
+    <h2>Class Overview</h2>
+    <p>The <code>SweetUrlHandler</code> class provides functionality to:</p>
+    <ul>
+        <li>Parse the request URI and extract route segments and query parameters.</li>
+        <li>Match routes against patterns and execute callbacks.</li>
+        <li>Handle custom route patterns with user-defined handlers.</li>
+    </ul>
+
+    <h2>Constructor</h2>
+    <p>The constructor initializes the route and query parameters based on the request URI.</p>
+    <pre><code>public function __construct()</code></pre>
+
+    <h2>Methods</h2>
+
+    <h3>1. <code>getRoute($index = null)</code></h3>
+    <p>Gets the route segments as an array or a specific segment if an index is provided.</p>
+    <pre><code>public function getRoute($index = null)</code></pre>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>$index</code> (int|null): The index of the route segment to return. If null, returns the entire route array.</li>
+    </ul>
+    <p><strong>Returns:</strong> Mixed - The route array or specific segment.</p>
+
+    <h3>2. <code>getParams($name = null)</code></h3>
+    <p>Gets all query parameters or a specific parameter by name.</p>
+    <pre><code>public function getParams($name = null)</code></pre>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>$name</code> (string|null): The name of the query parameter to return. If null, returns all parameters.</li>
+    </ul>
+    <p><strong>Returns:</strong> Mixed - The query parameters array or specific parameter value.</p>
+
+    <h3>3. <code>matchRoute($pattern)</code></h3>
+    <p>Matches the current route against a given pattern and returns an associative array of parameters if matched, or false if no match.</p>
+    <pre><code>public function matchRoute($pattern)</code></pre>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>$pattern</code> (string): The route pattern to match (e.g., <code>'products/{id}'</code>).</li>
+    </ul>
+    <p><strong>Returns:</strong> Array|false - Returns an associative array of parameters if matched, or false if no match.</p>
+
+    <h3>4. <code>handleRoute($pattern, $callback)</code></h3>
+    <p>Matches the route against a pattern and calls a callback function if matched.</p>
+    <pre><code>public function handleRoute($pattern, $callback)</code></pre>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>$pattern</code> (string): The route pattern to match.</li>
+        <li><code>$callback</code> (callable): The callback function to execute if the route matches.</li>
+    </ul>
+    <p><strong>Returns:</strong> void</p>
+
+    <h3>5. <code>addCustomHandler($pattern, $handler)</code></h3>
+    <p>Adds a custom route handler for specific patterns.</p>
+    <pre><code>public function addCustomHandler($pattern, $handler)</code></pre>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>$pattern</code> (string): The route pattern to match.</li>
+        <li><code>$handler</code> (callable): The handler function to execute if the route matches.</li>
+    </ul>
+    <p><strong>Returns:</strong> void</p>
+
+    <h3>6. <code>handleCustomRoutes()</code></h3>
+    <p>Handles custom routes by checking all registered handlers.</p>
+    <pre><code>public function handleCustomRoutes()</code></pre>
+    <p><strong>Returns:</strong> void</p>
+
+    <h2>Example Usage</h2>
+    <p>Here's a basic example of how to use the <code>SweetUrlHandler</code> class:</p>
+    <div class="example">
+        <pre><code>&lt;?php
+$handler = new SweetUrlHandler();
+
+// Define a route and callback
+$handler->handleRoute('products/{id}', function($params) {
+    echo 'Product ID: ' . $params['id'];
+});
+
+// Add a custom handler
+$handler->addCustomHandler('categories/{category}', function($params) {
+    echo 'Category: ' . $params['category'];
+});
+
+// Handle custom routes
+$handler->handleCustomRoutes();
+?&gt;</code></pre>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>SweetUrlHandler</code> class is a flexible and powerful tool for managing URL routing in PHP applications. By leveraging its methods and functionality, you can efficiently handle routes and query parameters with minimal effort.</p>
+
+</body>
+
+</html>
