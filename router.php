@@ -46,18 +46,21 @@ $path = isset($_GET['path']) ? $_GET['path'] : '';
 // Sanitize the path to prevent security issues
 $path = filter_var($path, FILTER_SANITIZE_STRING);
 
-// Split the path into components
-$components = array_filter(explode('/', trim($path, '/')));
+// Check if the path is not empty
+if (!empty($path)) {
+    // Split the path into components
+    $components = array_filter(explode('/', trim($path, '/')));
 
-// Rebuild the path for route matching
-$route = implode('/', $components);
+    // Rebuild the path for route matching
+    $route = implode('/', $components);
 
-// Handle the route based on the extracted path
-$matched = false;
-$handler->handleRoute($route, function($params) use (&$matched) {
-    $matched = true;
-    // The default behavior for a matched route can be handled here, or by the route-specific handler.
-});
+    // Handle the route based on the extracted path
+    $matched = false;
+    $handler->handleRoute($route, function($params) use (&$matched) {
+        $matched = true;
+        // The default behavior for a matched route can be handled here, or by the route-specific handler.
+    });
+}
 
 // If no route was matched, handle the 404 error
 if (!$matched) {
