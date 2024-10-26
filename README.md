@@ -185,5 +185,3 @@ I welcome contributions to enhance the functionality and improve the `SweetUrlHa
 4. **Submit a Pull Request**: Submit a pull request with a clear description of your changes.
 
 Please ensure your contributions follow the existing coding standards and add tests where appropriate. Open an issue to discuss your changes.
-
-Happy Coding ❤️
